@@ -1,43 +1,55 @@
-# tangro-actions-template
+# actions-otrs
 
-A GitHub Action template for tangro GitHub actions. It has the build step, the workflow and some dependencies pre-configured.
+Checks GitHub issue bodys and comments for OTRS Urls. Found OTRS Urls will be formatted with Markdown and the OTRS ticket will be notified via a note that an issue has linked to this ticket. Also a (configurable) label will be added to the issue. Another notification will be sent out when an issue referencing a ticket is closed.
 
-# Using this template
+> **Attention** This action is suited for our needs at @tangro. There is a high possibility that it won't work for you. Reach out to us if you're interested in using it in your workflows.
 
-a) Either go to [the repository](https://github.com/tangro/tangro-actions-template) and click on [Use this template](https://github.com/tangro/tangro-actions-template/generate)
-b) Or go to [create new tangro repo](https://github.com/organizations/tangro/repositories/new) or [create new user repo](https://github.com/new) and then select the `tangro/tangro-action-template` from the _Repository templaet_ list.
+# Example job
+
+```yml
+name: Check for OTRS Ticket Urls
+on:
+  issues:
+    types: [opened, edited, closed]
+  issue_comment:
+    types: [created, edited]
+jobs:
+  otrs:
+    name: Check for OTRS tickets
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check for OTRS tickets
+        uses: tangro/actions-otrs@1.0.0
+        env:
+          OTRS_USERNAME: ${{ secrets.OTRS_USERNAME }}
+          OTRS_PASSWORD: ${{ secrets.OTRS_PASSWORD }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        with:
+          label: 'Ticket'
+          otrs-url: 'https://{URL_TO_OTRS}/otrs/index.pl'
+          otrs-url-regex: 'https://{URL_TO_OTRS}/otrs/index.pl'
+          otrs-url-rest: 'https://{URL_TO_OTRS}/otrs/nph-genericinterface.pl/Webservice/GenericTicketConnectorREST'
+```
+
+> **Attention** Do not forget to pass the `GITHUB_TOKEN`, the `GITHUB_CONTEXT` the `OTRS_USERNAME` and the `OTRS_PASSWORD` via `env` variables. The `OTRS_USERNAME` and `OTRS_PASSWORD` have to be added to the secrets configuration.
+
+Steps the example job will perform:
+
+1.  Only act when an issue body gets created, edited or closed or an issue comment gets created or edited
+2.  Run the action which will check the text and works its magic
+
+# Usage
+
+The action will only run on events _issues_ and _issue_comment_ so make sure that your workflow only runs on those, too. Also you'll need a user inside OTRS with the sufficient rights to read issues and post notes. The credentials of this user have to be saved in the secret configuration under `OTRS_USERNAME` and `OTRS_PASSWORD`.
+
+## Parameters
+
+- `label` - The action will automatically add a label when a ticket URL has been found. By default it will add a `Ticket` label. You can set a different label here.
+- `otrs-url` - The URL the formatted links to the ticket will use
+- `otrs-url-regex` - In our case we have an internal and external URL to reach our OTRS. It looks somethin like this: `https://(internal|external).xxx.xx/otrs/index.pl`
+- `otrs-url-rest` - The url to the OTRS REST API
 
 # Development
 
-Create a new repository and copy the contents of this template repository to the new repository. Do not forget the `.github` folder it may be hidden on your machine.
-
-# Publishing an action
-
-> **Important** Do **not** run `npm build`. It will be done automatically. And do not check in the `dist` directory.
-
-There is a workflow already pre-configured that automatically publishs a new version when you push your code to the `master` branch. The workflow will take your npm package version and publish the action under that version. You have two options
-
-- Keep the current version number and the action will be updated
-- Bump the version number and a new action will be created
-
-The action-release workflow will create a branch with the `package.json` version as its name. An already existing branch will be overwritten.
-
-After the workflow/action has run your action will be available to be used.
-
-# FAQ
-
-## Do I need to check-in the node_modules folder
-
-No. This template uses [@zeit/ncc](https://github.com/zeit/ncc) to automatically create and bundle a single `index.js` with the `node_modules` and code included.
-
-## Can I put the `dist/` folder into the `.gitignore`
-
-No. It needs to be present for the action. It is planned to automatically alter the `.gitignore` to always check-in the `dist/` folder. But that's not ready yet.
-
-## What happens if I ran `npm build`
-
-Just delete the `dist/` folder.
-
-## Can I use a different branch than `master`
-
-Yes. Edit the `.github/workflows/release-action.yml`
+Follow the guide of the [tangro-actions-template](https://github.com/tangro/tangro-actions-template)
