@@ -38,7 +38,7 @@ async function run() {
       } else if (issueContext.event.action === 'closed') {
         await onIssueClosed(issueContext);
       } else {
-        console.log(
+        core.warning(
           `Unsuppoted event.action found: ${issueContext.event.action}`
         );
       }
@@ -52,7 +52,7 @@ async function run() {
       ) {
         await onIssueComment(issueCommentContext);
       } else {
-        console.log(
+        core.warning(
           `Unsuppoted event.action found: ${issueCommentContext.event.action}`
         );
       }
