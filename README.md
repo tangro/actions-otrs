@@ -1,6 +1,6 @@
 # actions-otrs
 
-Checks GitHub issue bodys and comments for OTRS Urls. Found OTRS Urls will be formatted with Markdown and the OTRS ticket will be notified via a note that an issue has linked to this ticket. Also a (configurable) label will be added to the issue. Another notification will be sent out when an issue referencing a ticket is closed.
+Checks GitHub issue bodies and comments for OTRS Urls. Found OTRS Urls will be formatted with Markdown and the OTRS ticket will be notified via a note that an issue has linked to this ticket. Also a (configurable) label will be added to the issue. Another notification will be sent out when an issue referencing a ticket is closed.
 
 > **Attention** This action is suited for our needs at @tangro. There is a high possibility that it won't work for you. Reach out to us if you're interested in using it in your workflows.
 
@@ -47,7 +47,7 @@ The action will only run on events _issues_ and _issue_comment_ so make sure tha
 
 - `label` - The action will automatically add a label when a ticket URL has been found. By default it will add a `Ticket` label. You can set a different label here.
 - `otrs-url` - The URL the formatted links to the ticket will use
-- `otrs-url-regex` - In our case we have an internal and external URL to reach our OTRS. It looks somethin like this: `https://(internal|external).xxx.xx/otrs/index.pl`
+- `otrs-url-regex` - In our case we have an internal and external URL to reach our OTRS. It looks something like this: `https://(internal|external).xxx.xx/otrs/index.pl`
 - `otrs-url-rest` - The url to the OTRS REST API
 
 # Development

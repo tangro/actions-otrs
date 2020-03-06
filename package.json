@@ -5,8 +5,7 @@
   "description": "Action to scan comments for OTRS Ticket URLs and notify those tickets",
   "main": "lib/main.js",
   "scripts": {
-    "build": "ncc build src/main.ts --minify",
-    "test": "jest"
+    "build": "ncc build src/main.ts --minify"
   },
   "repository": {
     "type": "git",
@@ -24,13 +23,9 @@
     "querystring": "^0.2.0"
   },
   "devDependencies": {
-    "@types/jest": "^24.0.13",
     "@types/node": "^12.0.4",
     "@types/node-fetch": "^2.5.0",
     "@zeit/ncc": "^0.20.4",
-    "jest": "^24.8.0",
-    "jest-circus": "^24.7.1",
-    "ts-jest": "^24.0.2",
     "typescript": "^3.5.1"
   }
 }
