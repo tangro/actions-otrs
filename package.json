@@ -17,7 +17,7 @@
   "author": "ankri",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "1.2.4",
+    "@actions/core": "1.2.6",
     "@tangro/tangro-github-toolkit": "1.0.1",
     "node-fetch": "2.6.1",
     "querystring": "0.2.0"
