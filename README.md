@@ -1,4 +1,4 @@
-# actions-otrs
+# tangro/actions-otrs
 
 Checks GitHub issue bodies and comments for OTRS Urls. Found OTRS Urls will be formatted with Markdown and the OTRS ticket will be notified via a note that an issue has linked to this ticket. Also a (configurable) label will be added to the issue. Another notification will be sent out when an issue referencing a ticket is closed.
 
@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check for OTRS tickets
-        uses: tangro/actions-otrs@1.0.1
+        uses: tangro/actions-otrs@v1.0.3
         env:
           OTRS_USERNAME: ${{ secrets.OTRS_USERNAME }}
           OTRS_PASSWORD: ${{ secrets.OTRS_PASSWORD }}
@@ -53,3 +53,11 @@ The action will only run on events _issues_ and _issue_comment_ so make sure tha
 # Development
 
 Follow the guide of the [tangro-actions-template](https://github.com/tangro/tangro-actions-template)
+
+# Scripts
+
+- `npm run update-readme` - Run this script to update the README with the latest versions.
+
+  > You do not have to run this script, since it is run automatically by the release action
+
+- `npm run update-dependencies` - Run this script to update all the dependencies
