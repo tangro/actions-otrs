@@ -1,6 +1,6 @@
 {
   "name": "@tangro/actions-otrs",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "private": true,
   "description": "Action to scan comments for OTRS Ticket URLs and notify those tickets",
   "main": "lib/main.js",
