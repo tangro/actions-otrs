@@ -39,7 +39,7 @@ async function run() {
         await onIssueClosed(issueContext);
       } else {
         core.warning(
-          `Unsuppoted event.action found: ${issueContext.event.action}`
+          `Unsupported event.action found: ${issueContext.event.action}`
         );
       }
     } else if (context.event_name === 'issue_comment') {
@@ -53,7 +53,7 @@ async function run() {
         await onIssueComment(issueCommentContext);
       } else {
         core.warning(
-          `Unsuppoted event.action found: ${issueCommentContext.event.action}`
+          `Unsupported event.action found: ${issueCommentContext.event.action}`
         );
       }
     }
