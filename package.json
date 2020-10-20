@@ -27,7 +27,7 @@
     "querystring": "0.2.0"
   },
   "devDependencies": {
-    "@types/node": "14.11.8",
+    "@types/node": "14.11.10",
     "@types/node-fetch": "2.5.7",
     "@zeit/ncc": "0.22.3",
     "ejs": "3.1.5",
