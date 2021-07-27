@@ -27,8 +27,8 @@
     "querystring": "0.2.1"
   },
   "devDependencies": {
-    "@types/node": "16.3.3",
-    "@types/node-fetch": "2.5.11",
+    "@types/node": "16.4.3",
+    "@types/node-fetch": "2.5.12",
     "@zeit/ncc": "0.22.3",
     "ejs": "3.1.6",
     "rimraf": "3.0.2",
