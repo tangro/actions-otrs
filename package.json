@@ -27,11 +27,11 @@
     "querystring": "0.2.1"
   },
   "devDependencies": {
-    "@types/node": "16.7.12",
+    "@types/node": "16.9.1",
     "@types/node-fetch": "3.0.2",
     "@zeit/ncc": "0.22.3",
     "ejs": "3.1.6",
     "rimraf": "3.0.2",
-    "typescript": "4.4.2"
+    "typescript": "4.4.3"
   }
 }
