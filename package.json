@@ -23,11 +23,11 @@
   "dependencies": {
     "@actions/core": "1.6.0",
     "@tangro/tangro-github-toolkit": "1.0.3",
-    "node-fetch": "3.0.0",
+    "node-fetch": "3.1.0",
     "querystring": "0.2.1"
   },
   "devDependencies": {
-    "@types/node": "16.11.6",
+    "@types/node": "16.11.7",
     "@types/node-fetch": "3.0.2",
     "@zeit/ncc": "0.22.3",
     "ejs": "3.1.6",
