@@ -5,6 +5,9 @@ import { getOtrsTicketsFromText, prettifyUrlInText } from './otrs/utils';
 import { addNoteToTicket, getTicketInformation } from './otrs/ticket';
 import { OtrsTicket } from './otrs/types';
 
+// copied from znuny ticket article quoted text, apply to div
+const quoteProps = 'style="border:none; border-left:solid blue 1.5pt; padding:0cm 0cm 0cm 4.0pt" type="cite"';
+
 export async function onIssueBodyChanged(
   context: GitHubContext<GitHubIssueEvent>
 ): Promise<void> {
@@ -30,7 +33,7 @@ export async function onIssueBodyChanged(
       // only add a note to the ticket if it has not been notified
       if (!ticket.url.includes('notified=true')) {
         await addNoteToTicket({
-          body: `Dieses Ticket wurde in einem Issue referenziert: <a href="${issueUrl}" norefer target="_blank">#${issueNumber} ${issueTitle}</a>`,
+          body: `Dieses Ticket wurde in einem Issue referenziert: <a href="${issueUrl}" norefer target="_blank">#${issueNumber} ${issueTitle}</a>\n<div ${quoteProps}>${issueBody}</div>`,
           subject: 'Notiz',
           ticketId: ticket.id
         });
@@ -102,7 +105,7 @@ export async function onIssueComment(
       // only add a note to the ticket if it has not been notified
       if (!ticket.url.includes('notified=true')) {
         await addNoteToTicket({
-          body: `Dieses Ticket wurde in einem Issuekommentar referenziert: <a href="${commentUrl}" norefer target="_blank">#${issueNumber} ${issueTitle}</a>`,
+          body: `Dieses Ticket wurde in einem Issuekommentar referenziert: <a href="${commentUrl}" norefer target="_blank">#${issueNumber} ${issueTitle}</a>\n<div ${quoteProps}>${commentBody}</div>`,
           subject: 'Notiz',
           ticketId: ticket.id
         });
