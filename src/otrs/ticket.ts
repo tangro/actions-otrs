@@ -6,7 +6,7 @@ export const getTicketInformation = async (
 ): Promise<OtrsTicket> => {
   const tickets = await OtrsApi.Ticket(ticketId, {
     DynamicFields: 1
-  });
+  }) as { Ticket: [OtrsTicket]};
   const ticket = tickets.Ticket[0];
 
   return {

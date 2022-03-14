@@ -17,7 +17,7 @@ export const fetchWrapper = async (
       return data;
     }
   } catch (error) {
-    core.error(error);
+    core.error(error as Error);
     throw error;
   }
 };
