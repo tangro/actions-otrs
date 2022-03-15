@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check for OTRS tickets
-        uses: tangro/actions-otrs@v1.0.6
+        uses: tangro/actions-otrs@v1.0.7
         env:
           OTRS_USERNAME: ${{ secrets.OTRS_USERNAME }}
           OTRS_PASSWORD: ${{ secrets.OTRS_PASSWORD }}
