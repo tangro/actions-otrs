@@ -27,7 +27,7 @@
     "querystring": "0.2.1"
   },
   "devDependencies": {
-    "@types/node": "18.7.5",
+    "@types/node": "18.7.11",
     "@types/node-fetch": "3.0.2",
     "@vercel/ncc": "0.34.0",
     "ejs": "3.1.8",
