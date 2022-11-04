@@ -6,7 +6,8 @@ import { addNoteToTicket, getTicketInformation } from './otrs/ticket';
 import { OtrsTicket } from './otrs/types';
 
 // copied from znuny ticket article quoted text, apply to div
-const quoteProps = 'style="border:none; border-left:solid blue 1.5pt; padding:0cm 0cm 0cm 4.0pt" type="cite"';
+const quoteProps =
+  'style="border:none; border-left:solid blue 1.5pt; padding:0cm 0cm 0cm 4.0pt" type="cite"';
 
 export async function onIssueBodyChanged(
   context: GitHubContext<GitHubIssueEvent>
@@ -22,7 +23,7 @@ export async function onIssueBodyChanged(
   let newIssueBody = issueBody;
 
   if (ticketsInIssueBody.length > 0) {
-    await github.issues.addLabels({
+    await github.rest.issues.addLabels({
       labels: [label],
       owner,
       repo,
@@ -42,7 +43,7 @@ export async function onIssueBodyChanged(
 
         newIssueBody = prettifyUrlInText(newIssueBody, ticketInfo, ticket);
 
-        await github.issues.update({
+        await github.rest.issues.update({
           body: newIssueBody,
           issue_number: issueNumber,
           owner,
@@ -94,7 +95,7 @@ export async function onIssueComment(
   let newCommentBody = commentBody;
 
   if (ticketsInCommentBody.length > 0) {
-    await github.issues.addLabels({
+    await github.rest.issues.addLabels({
       labels: [label],
       owner,
       repo,
@@ -114,7 +115,7 @@ export async function onIssueComment(
 
         newCommentBody = prettifyUrlInText(newCommentBody, ticketInfo, ticket);
 
-        await github.issues.updateComment({
+        await github.rest.issues.updateComment({
           body: newCommentBody,
           comment_id: commentId,
           owner,
