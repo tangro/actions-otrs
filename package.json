@@ -22,12 +22,12 @@
   "license": "MIT",
   "dependencies": {
     "@actions/core": "1.11.1",
-    "@tangro/tangro-github-toolkit": "1.0.9",
+    "@tangro/tangro-github-toolkit": "1.0.10",
     "node-fetch": "3.3.2",
     "querystring": "0.2.1"
   },
   "devDependencies": {
-    "@types/node": "22.13.13",
+    "@types/node": "22.13.14",
     "@types/node-fetch": "2.6.12",
     "@vercel/ncc": "0.38.3",
     "ejs": "3.1.10",
