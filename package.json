@@ -21,13 +21,13 @@
   "author": "ankri",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "2.0.1",
+    "@actions/core": "2.0.2",
     "@tangro/tangro-github-toolkit": "1.0.10",
     "node-fetch": "3.3.2",
     "querystring": "0.2.1"
   },
   "devDependencies": {
-    "@types/node": "25.0.3",
+    "@types/node": "25.0.7",
     "@types/node-fetch": "2.6.13",
     "@vercel/ncc": "0.38.4",
     "ejs": "3.1.10",
