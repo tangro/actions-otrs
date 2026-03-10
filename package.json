@@ -27,10 +27,10 @@
     "querystring": "0.2.1"
   },
   "devDependencies": {
-    "@types/node": "25.3.3",
+    "@types/node": "25.4.0",
     "@types/node-fetch": "2.6.13",
     "@vercel/ncc": "0.38.4",
-    "ejs": "4.0.1",
+    "ejs": "5.0.1",
     "rimraf": "6.1.3",
     "typescript": "5.9.3"
   }
