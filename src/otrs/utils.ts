@@ -1,4 +1,3 @@
-import * as core from '@actions/core';
 import { OtrsTicketUrlInformation, OtrsTicket } from './types';
 
 const escapeText = (text: string): string =>

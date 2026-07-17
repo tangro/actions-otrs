@@ -47,6 +47,9 @@ export const TicketUpdate = async (ticketID: string, data: object) => {
     Password: process.env.OTRS_PASSWORD
   };
   const otrsUrlRest = process.env.OTRS_URL_REST;
+  if (otrsUrlRest == null) {
+    throw new Error('OTRS_URL_REST environment variable is not set');
+  }
 
   return fetchWrapper(
     `${otrsUrlRest}/Ticket/${ticketID}?${querystring.stringify(auth)}`,
