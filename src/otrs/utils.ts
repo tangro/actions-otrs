@@ -7,10 +7,13 @@ const escapeText = (text: string): string =>
 export const getOtrsTicketsFromText = (
   text: string
 ): OtrsTicketUrlInformation[] => {
-  const baseUrl = core.getInput('otrs-url');
-  const baseUrlRegex = core.getInput('otrs-url-regex') || baseUrl;
+  const baseUrl = process.env.OTRS_URL;
+  if (baseUrl == null) {
+    throw new Error('OTRS_URL environment variable is not set');
+  }
+
   const urlRegexp = new RegExp(
-    `${escapeText(baseUrlRegex)}\\?.*TicketID=(\\d+).*(&notified=true)?`,
+    `${escapeText(baseUrl)}\\?.*TicketID=(\\d+).*(&notified=true)?`,
     'gm'
   );
 

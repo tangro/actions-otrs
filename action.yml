@@ -9,15 +9,7 @@ inputs:
     description: 'Add this label to the issue'
     required: false
     default: 'Ticket'
-  otrs-url:
-    description: 'The URL of the OTRS'
-    required: true
-  otrs-url-regex:
-    description: 'A regex string to determine if a given URL is a OTRS url'
-    required: false
-  otrs-url-rest:
-    description: 'The URL of the REST interface for OTRS'
-    required: true
+
 runs:
   using: 'node16'
   main: 'dist/index.js'
