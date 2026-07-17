@@ -4,8 +4,6 @@ Checks GitHub issue bodies and comments for OTRS Urls. Found OTRS Urls will be f
 
 > **Attention** This action is suited for our needs at @tangro. There is a high possibility that it won't work for you. Reach out to us if you're interested in using it in your workflows.
 
-> **Attention** You need to set `OTRS_URL` and `OTRS_URL_REST` as github environment variables.
-
 # Example job
 
 ```yml
@@ -29,6 +27,9 @@ jobs:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         with:
           label: 'Ticket'
+          otrs-url: 'https://{URL_TO_OTRS}/otrs/index.pl'
+          otrs-url-regex: 'https://{URL_TO_OTRS}/otrs/index.pl'
+          otrs-url-rest: 'https://{URL_TO_OTRS}/otrs/nph-genericinterface.pl/Webservice/GenericTicketConnectorREST'
 ```
 
 > **Attention** Do not forget to pass the `GITHUB_TOKEN`, the `GITHUB_CONTEXT` the `OTRS_USERNAME` and the `OTRS_PASSWORD` via `env` variables. The `OTRS_USERNAME` and `OTRS_PASSWORD` have to be added to the secrets configuration.
@@ -45,6 +46,9 @@ The action will only run on events _issues_ and _issue_comment_ so make sure tha
 ## Parameters
 
 - `label` - The action will automatically add a label when a ticket URL has been found. By default it will add a `Ticket` label. You can set a different label here.
+- `otrs-url` - The URL the formatted links to the ticket will use
+- `otrs-url-regex` - In our case we have an internal and external URL to reach our OTRS. It looks something like this: `https://(internal|external).xxx.xx/otrs/index.pl`
+- `otrs-url-rest` - The url to the OTRS REST API
 
 # Development
 
