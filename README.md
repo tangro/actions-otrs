@@ -4,6 +4,8 @@ Checks GitHub issue bodies and comments for OTRS Urls. Found OTRS Urls will be f
 
 > **Attention** This action is suited for our needs at @tangro. There is a high possibility that it won't work for you. Reach out to us if you're interested in using it in your workflows.
 
+> **Attention** You need to set `OTRS_URL` and `OTRS_URL_REST` as github environment variables.
+
 # Example job
 
 ```yml
