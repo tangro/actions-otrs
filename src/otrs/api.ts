@@ -30,7 +30,7 @@ export const Ticket = async (
     UserLogin: process.env.OTRS_USERNAME,
     Password: process.env.OTRS_PASSWORD
   };
-  const otrsUrlRest = core.getInput('otrs-url-rest');
+  const otrsUrlRest = process.env.OTRS_URL_REST;
 
   return fetchWrapper(
     `${otrsUrlRest}/Ticket/${ticketID}?${querystring.stringify({
@@ -46,7 +46,10 @@ export const TicketUpdate = async (ticketID: string, data: object) => {
     UserLogin: process.env.OTRS_USERNAME,
     Password: process.env.OTRS_PASSWORD
   };
-  const otrsUrlRest = core.getInput('otrs-url-rest');
+  const otrsUrlRest = process.env.OTRS_URL_REST;
+  if (otrsUrlRest == null) {
+    throw new Error('OTRS_URL_REST environment variable is not set');
+  }
 
   return fetchWrapper(
     `${otrsUrlRest}/Ticket/${ticketID}?${querystring.stringify(auth)}`,
