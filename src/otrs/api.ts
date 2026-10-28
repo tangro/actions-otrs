@@ -1,5 +1,5 @@
 import fetch from 'node-fetch';
-import querystring from 'querystring';
+import querystring from 'node:querystring';
 import * as core from '@actions/core';
 
 export const fetchWrapper = async (
