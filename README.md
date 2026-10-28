@@ -48,6 +48,16 @@ The action will only run on events _issues_ and _issue_comment_ so make sure tha
 
 # Development
 
+Use Node.js 24 for development. The action runs on the GitHub Actions Node.js 24
+runtime independently of the Node.js version selected by `actions/setup-node`.
+Self-hosted runners must support the Node.js 24 action runtime.
+
+Run `npm ci` followed by `npm run build`. The build compiles TypeScript with
+`tsc` before bundling the generated JavaScript with `ncc`, whose TypeScript
+loader does not support the native TypeScript 7 compiler.
+TypeScript preserves ESM imports so `ncc` can bundle the ESM-only dependencies
+into the CommonJS action entry point.
+
 Follow the guide of the [tangro-actions-template](https://github.com/tangro/tangro-actions-template)
 
 # Scripts
